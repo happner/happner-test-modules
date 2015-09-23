@@ -31,17 +31,17 @@ Default.prototype.exchangeMethod = function(opts, callback) {
 }
 
 
-Default.prototype.mware1 = function($happn, res, req, next) {
-  res.send('mware1\n');
+Default.prototype.mware1 = function($happn, req, res, next) {
+  res.write('mware1\n');
   next();
 }
 
-Default.prototype.mware2 = function(res, req, next) {
-  res.send('mware2\n');
+Default.prototype.mware2 = function(req, res, next) {
+  res.write('mware2\n');
   next();
 }
 
-Default.prototype.webMethod = function($happn, res, req, next) {
+Default.prototype.webMethod = function($happn, req, res, next) {
   res.end('done');
 }
 

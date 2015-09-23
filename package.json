@@ -1,6 +1,6 @@
 {
   "name": "happner-test-modules",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Test modules for happner",
   "main": "index.js",
   "scripts": {
