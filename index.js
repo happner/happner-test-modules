@@ -1,5 +1,8 @@
 module.exports = Default;
 
+var serveStatic = require('serve-static');
+var path = require('path');
+
 module.exports.AsFactory = require('./lib/as_factory');
 module.exports.AsModule = require('./lib/as_module');
 module.exports.AsClass = require('./lib/as_class');
@@ -22,8 +25,6 @@ Default.prototype.stop = function($happn, callback) {
   callback();
 }
 
-
-
 Default.prototype.exchangeMethod = function(opts, callback) {
   opts.args = this.args;
   opts.started = this.started;
@@ -45,19 +46,4 @@ Default.prototype.webMethod = function($happn, req, res, next) {
   res.end('done');
 }
 
-Default.prototype.$happner = {
-  config: {
-    component: {
-      startMethod: 'start',
-      stopMethod: 'stop',
-      web: {
-        routes: {
-          'long-route': ['mware1', 'mware2', 'webMethod'],
-          'short-route': 'webMethod',
-          'widget': 'static',
-          'static': 'static',
-        }
-      }
-    }
-  }
-}
+Default.prototype.static = serveStatic(__dirname + path.sep + 'static');
